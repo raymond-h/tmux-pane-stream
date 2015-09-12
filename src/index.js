@@ -44,3 +44,12 @@ export class TmuxPaneWritable extends stream.Writable {
         .once('error', done);
     }
 }
+
+import duplexify from 'duplexify';
+
+export default function createDuplexTmuxPaneStream(targetPane) {
+    return duplexify(
+        new TmuxPaneWritable(targetPane),
+        new TmuxPaneReadable(targetPane)
+    );
+}
