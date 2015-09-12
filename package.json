@@ -1,7 +1,7 @@
 {
   "name": "tmux-pane-stream",
   "description": "Easy streamin' to and fro' tmux panes",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "lib/index.js",
   "bin": {
