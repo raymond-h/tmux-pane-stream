@@ -1,16 +1,30 @@
 # tmux-pane-stream
 Easy streamin' to and fro' tmux panes
 
+Writing to pane is implemented using `tmux send-keys`, reading from pane is implemented using `tmux pipe-pane` and a TCP socket connection. Thus, input piped **into** the pane is also visible coming **out** of the pane, and if you have a pipe set already for a pane, it'll be replaced by this tool due to tmux limitations.
+
 ## Installing
 `npm install tmux-pane-stream`
 
 ## Example usage
-```js
-var tmux-pane-stream = require('tmux-pane-stream');
+In both examples, `targetPane` is the same kind of string `tmux` accepts for specifying `target-pane` via `-t` command-line flag.
 
-// Do whatever you want with 'tmux-pane-stream'!
+### CLI
+```sh
+echo "echo hello!" | tmux-pane-stream targetPane
 ```
-    
+
+`tmux-pane-stream` is also aliased as `tmuxps`.
+
+### Programmatic
+```js
+var TmuxPaneStream = require('tmux-pane-stream');
+
+process.stdin
+.pipe(new TmuxPaneStream(targetPane))
+.pipe(process.stdout);
+```
+
 ## License
 The MIT License (MIT)
 
