@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import TmuxPaneStream from './index';
 
 const pane = process.argv[2];

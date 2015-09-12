@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "main": "lib/index.js",
+  "bin": {
+    "tmux-pane-stream": "./lib/cli.js",
+    "tmuxps": "./lib/cli.js"
+  },
   "author": "Raymond Hammarling",
   "scripts": {
     "lint": "eslint src/ test/",
